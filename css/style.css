@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Cal+Sans&display=swap');
+
+
+*{
+    font-family: "Cal Sans", sans-serif;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+#cont p{
+    font-size: 1rem;
+}
+body{
+    background-image: url(../img/bg.png);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+
+
+
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+
+}
+header{
+    font-size: 1.4rem;
+    text-align: center;
+    margin: 10px;
+}
+.container{
+    height: 500px;
+    width: 90%;
+    max-width: 550px;
+    background-color: rgba(245, 244, 255, 0.742);
+    backdrop-filter: blur(10px);                
+  -webkit-backdrop-filter: blur(10px);  
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+}
+header h1{
+    font-weight: 100;
+}
+.campo button{
+    margin-left: 5px;
+    box-shadow: none;
+    border: none;
+    width: 20%;
+    text-align: center;
+    font-size: 1rem;
+    height: 50px;
+    background-color: rgb(38, 38, 255);
+    color: #fff;
+    padding: 10px;
+    border-radius: 10px;
+    transition: background .3s;
+}
+#mensagem{
+    text-align: center;
+    margin-top: -10px;
+}
+p{
+    text-align: center;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+    padding: 5px;
+    font-weight: 100;
+}
+.campo button:hover{
+    background-color: #0c04a3;
+}
+.campo{
+    display: flex;
+    text-align: center;
+    margin-bottom: 20px;
+
+}
+
+.campo input{
+    background-color: rgb(230, 232, 255);
+    font-size: 1.7rem;
+    width: 80%;
+    height: 50px;
+    border-radius: 10px;
+    border: none;
+    padding: 10px;
+}
+#lista-tarefa{
+    overflow-y: auto;
+    height: 450px;
+   
+}
+li{
+    border: 1px solid #000;
+    margin: 5px;
+    padding: 10px;
+    border-radius: 10px;
+    font-weight: 100;
+    font-size: 1.5rem;
+    
+    
+}
+.edit,.delete{
+    float: right;
+    border: none;
+    margin-right: 10px;
+    color: rgb(57, 67, 210);
+    background-color: transparent;
+    cursor: pointer;
+    transition: color .3s;
+
+}
+.edit:hover,.delete:hover{
+ color: #07025e;
+}
+
+#lista-tarefa input{
+
+  transform: scale(1.5);
+  margin-right: 10px;
+
+}
+li:has(input:checked){
+    font-style: italic;
+    text-decoration: line-through;
+  }
+#cont{
+    border-top: solid 1px #000;
+    text-align: center;
+ 
+}
