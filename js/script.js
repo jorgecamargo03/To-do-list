@@ -51,6 +51,7 @@
         `;
 
         listaTarefa.appendChild(li);
+        salvarTarefas()
         txtinput.value = '';
         mostrarMensagem('Adicionado com sucesso!', 'darkgreen');
         atualizarContador();
@@ -63,6 +64,7 @@
             const li = elem.closest('li');
             if (li) {
                 li.remove();
+                salvarTarefas()
                 mostrarMensagem('Tarefa removida', 'darkred');
                 atualizarContador();
         }
@@ -91,6 +93,7 @@
         const novoTexto = novotxt.value.trim();
         if (itemEmEdicao && novoTexto !== '') {
             itemEmEdicao.textContent = novoTexto;
+            salvarTarefas()
             mostrarMensagem('Tarefa editada com sucesso!', 'darkblue');
             resetarCampos();
             atualizarContador();
@@ -121,3 +124,36 @@
         document.getElementById('feitas').textContent = feitas;
         document.getElementById('incompletas').textContent = incompletas;
     }
+    function salvarTarefas() {
+        const tarefas = [];
+        const itens = document.querySelectorAll('#lista-tarefa li');
+    
+        itens.forEach(item => {
+            const texto = item.querySelector('.texto-tarefa').textContent;
+            const feito = item.querySelector('input[type="checkbox"]').checked;
+    
+            tarefas.push({ texto, feito });
+        });
+    
+        localStorage.setItem('tarefas', JSON.stringify(tarefas));
+    }
+
+
+
+
+    function carregarTarefas() {
+        const tarefasSalvas = JSON.parse(localStorage.getItem('tarefas')) || [];
+        tarefasSalvas.forEach(({ texto, feito }) => {
+            const li = document.createElement('li');
+            li.innerHTML = `
+                <input type="checkbox" ${feito ? 'checked' : ''}>
+                <span class="texto-tarefa">${texto}</span>
+                <button class="edit"><i class="fas fa-edit fa-2x"></i></button>
+                <button class="delete"><i class="fas fa-trash fa-2x"></i></button>
+            `;
+            listaTarefa.appendChild(li);
+        });
+    
+        atualizarContador();
+    }
+    carregarTarefas();
